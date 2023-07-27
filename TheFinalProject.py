@@ -50,7 +50,7 @@ height_entry.pack(pady=12, padx=10)
 weight_entry = customtkinter.CTkEntry(master=my_frame, placeholder_text="الوزن")
 weight_entry.pack(pady=12, padx=10)
 
-blood_pressure_entry = customtkinter.CTkEntry(master=my_frame, placeholder_text="ضغط الدم")
+blood_pressure_entry = customtkinter.CTkEntry(master=my_frame, placeholder_text="الدم ضغط")
 blood_pressure_entry.pack(pady=12, padx=10)
 
 # Create a button to trigger the calculation or further actions
