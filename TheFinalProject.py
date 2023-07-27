@@ -58,4 +58,39 @@ button = customtkinter.CTkButton(master=my_frame, text="اكمل", command=save_
 button.pack(pady=12)
 
 
+
 root.mainloop()
+
+
+
+# import customtkinter
+
+# customtkinter.set_appearance_mode("dark")
+# customtkinter.set_default_color_theme("dark-blue")
+
+# root1 = customtkinter.CTk()
+# root1.geometry("350x550")
+
+# def save_1():
+#     global name, id
+#     name = entry1.get()
+#     id = entry2.get()
+
+# title1  = root1.title('الطبيب الطيب')
+
+# frame = customtkinter.CTkFrame(master=root1)
+# frame.pack(pady=20, padx=60, fill="both", expand=True)
+
+# label = customtkinter.CTkLabel(master=frame, text="المعلومات الشخصية", font=("Roboto", 24))
+# label.pack(pady=12, padx=10)
+
+# entry1 = customtkinter.CTkEntry(master=frame, placeholder_text="الاسم")
+# entry1.pack(pady=12, padx=10)
+
+# entry2 = customtkinter.CTkEntry(master=frame, placeholder_text="الهوية الوطنية")
+# entry2.pack(pady=12, padx=10)
+
+# button = customtkinter.CTkButton(master=frame,text="تفضل", command=save_1)
+# button.pack(pady=12, padx=10)
+
+# root1.mainloop()
