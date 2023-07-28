@@ -10,10 +10,14 @@ root.title('الطبيب الطيب')
 
 def save_2():
     global name, id
-    
-    name = str(entry1.get())
-    id = int(entry2.get())
-    id = str(id)
+    try : 
+        name = str(entry1.get())
+        id = int(entry2.get())
+        id = str(id)
+    except ValueError:
+        verror = customtkinter.CTkLabel(frame2, text="الرجاء ادخال المعلومات صحيحة وكاملة", font=("inherit", 10, "bold"),text_color='red')
+        verror.pack(pady=12, padx=10)
+        
     if name == '' or id == '' or len(id)!=10 or (len(name.split(' ')) < 3):
         verror = customtkinter.CTkLabel(frame2, text="الرجاء ادخال المعلومات صحيحة وكاملة", font=("inherit", 10, "bold"),text_color='red')
         verror.pack(pady=12, padx=10)
