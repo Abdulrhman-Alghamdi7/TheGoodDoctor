@@ -1,8 +1,4 @@
 
-
-
-
-
 import customtkinter
 from customtkinter import *
 import tkinter as tk
