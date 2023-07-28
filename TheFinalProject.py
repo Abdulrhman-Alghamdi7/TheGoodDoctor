@@ -56,7 +56,7 @@ def save_3():
                 heat_value = (heat_value-32)/1.8
     except ValueError:
          verror = customtkinter.CTkLabel(frame3, text="الرجاء كتابة ارقام فقط", font=("inherit", 13, "bold"),text_color='red')
-         aerror = customtkinter.CTkLabel(frame3, text="'في حالة عدم وجود اي من القيم الاختيارية اكتب '0'", font=("inherit", 15, "bold"),text_color='red')
+         aerror = customtkinter.CTkLabel(frame3, text="'في حالة عدم وجود اي من\n القيم الاختيارية اكتب '0'", font=("inherit", 15, "bold"),text_color='red')
          aerror.pack(pady=12, padx=10)      
          verror.pack(pady=12, padx=10)
     else:
