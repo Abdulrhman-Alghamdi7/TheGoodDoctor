@@ -1,12 +1,38 @@
+
+
+
+
+
 import customtkinter
 from customtkinter import *
 import tkinter as tk
+import openai
+openai.api_key = "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"
 
 customtkinter.set_appearance_mode("System")
 customtkinter.set_default_color_theme("dark-blue")
 root = customtkinter.CTk()
 root.geometry("350x550")
 root.title('الطبيب الطيب')
+
+def askgpt():
+    global resultt
+    
+    details = f'على ماذا يمكن ان تدل هذه الاعراض : الضغط الانقباضي : {user_data["Diastolic"]}, الضغط الانبساطي : {user_data["Systolic Pressure"]}, درجة الحرارة : {user_data["Heat"]}, و {symptoms.get()}, علما بان العمر هو {user_data["Age"]}, و مؤشر كتلة الجسم هو {user_data["BMI"]}, واخيرا اذكر بعض النصائح في مثل هذه الحالة واذكر ما قد يجب فعله و اذكر مستوى الخطر مرتفع او منخفض او متوسط'
+    response = openai.Completion.create(
+        model = 'text-davinci-003',
+        prompt = details,
+        temperature=0.9,
+        max_tokens=1500,
+        top_p=1,
+        frequency_penalty=0.0,
+        presence_penalty=0.6,
+    )
+    resultt = response['choices'][0]['text']
+
+    frame4.pack_forget()
+    frame5.pack(pady=20, padx=60, fill="both", expand=True)
+
 
 def save_2():
     global name, id
@@ -80,12 +106,14 @@ def save_3():
         frame3.pack_forget()
         frame4.pack(pady=20, padx=60, fill="both", expand=True)
 
-# def save_4():
+#def save_4():
+
     
 
 frame2 = customtkinter.CTkFrame(master=root)
 frame3 = customtkinter.CTkFrame(master=root)
 frame4 = customtkinter.CTkFrame(master=root)
+frame5 = customtkinter.CTkFrame(master=root)
 
 label1 = customtkinter.CTkLabel(master=frame2, text="المعلومات الشخصية", font=("Roboto", 24))
 label1.pack(pady=12, padx=10)
@@ -136,7 +164,14 @@ heading.pack(pady=10, padx=10)
 symptoms = customtkinter.CTkEntry(master=frame4)
 symptoms.pack(pady=10, padx=10)
 # Create a button to trigger the calculation or further actions
-button3 = customtkinter.CTkButton(master=frame4,text="اكمل")#, command=save_4)
-button3.pack(pady=12)
+
+button4 = customtkinter.CTkButton(master=frame4,text="اكمل",command=askgpt)#, command=save_4)
+button4.pack(pady=12)
+
+my_frame = customtkinter.CTkFrame(master=frame5)
+
+result = customtkinter.CTkLabel(master=frame4, text=resultt, font=("inherit", 15, "bold"))
+result.pack(pady=10, padx=10)
+
 
 root.mainloop()
