@@ -1,9 +1,10 @@
-
 import customtkinter
 from customtkinter import *
 import tkinter as tk
 import openai
-openai.api_key = "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"
+openai.api_key = "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"
+
+resultt = 'test'
 
 customtkinter.set_appearance_mode("System")
 customtkinter.set_default_color_theme("dark-blue")
@@ -26,6 +27,7 @@ def askgpt():
     )
     resultt = response['choices'][0]['text']
 
+    print(resultt)
     frame4.pack_forget()
     frame5.pack(pady=20, padx=60, fill="both", expand=True)
 
@@ -166,7 +168,7 @@ button4.pack(pady=12)
 
 my_frame = customtkinter.CTkFrame(master=frame5)
 
-result = customtkinter.CTkLabel(master=frame4, text=resultt, font=("inherit", 15, "bold"))
+result = customtkinter.CTkLabel(master=frame5, text = resultt, font=("inherit", 15, "bold"))
 result.pack(pady=10, padx=10)
 
 
