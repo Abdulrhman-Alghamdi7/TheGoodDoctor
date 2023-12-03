@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استكمال البيانات</title>
+    <link rel="stylesheet" href="./assets/css/hitrun.css">
+</head>
+
+<body class="bg-light text-center" dir="rtl">
+    <form action="#" style="height: 100vh; display: grid; place-content: center;">
+        <h3 class="fw-bold">اكتب الأعراض التي تعاني منها بدقة</h3>
+        <br>
+        <textarea name="symptoms" cols="30" rows="10" required class="form-control"></textarea>
+        <br>
+        <br>
+        <button class="btn btn-primary">اكمل</button>
+    </form>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', (ev) => {
+            ev.preventDefault();
+            const formData = new FormData(ev.currentTarget);
+            const allData = {
+                ...JSON.parse(sessionStorage.getItem('userData')),
+                symptoms: formData.get('symptoms')
+            }
+
+            console.log('all Data', allData)
+
+            const params = new URLSearchParams();
+
+            // Convert the object into an array of key-value pairs
+            const keyValuePairs = Object.entries(allData);
+
+            // Append the key-value pairs to the URLSearchParams object
+            keyValuePairs.forEach(([key, value]) => {
+                params.append(key, value);
+            });
+
+            // Generate the query string
+            const queryString = params.toString();
+
+            // Construct the final URL with the query string
+            const url = `/prompt?${queryString}`;
+            console.log(url);
+
+            //Send data to chatGPT
+            window.location.href=url
+            // fetch(url).then(res=> console.log(res))
+        })
+
+    </script>
+</body>
+
+</html>

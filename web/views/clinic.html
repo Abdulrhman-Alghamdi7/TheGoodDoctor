@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/hitrun.css">
+</head>
+
+<body class="bg-light text-center" dir="rtl">
+
+    <form action="./clinic-cont.html" style="height: 100vh; display: grid; place-content: center;">
+        <h1>الدخول إلى العيادة الذكية</h1>
+        <br>
+        <small class="mb-1 fw-semibold">نرجو تعبئة البيانات</small>
+        <input class="form-control mb-2 no-spinner" required  oninvalid="this.setCustomValidity('لا يمكن ترك هذه الخانة فارغة')" oninput="setCustomValidity('')" type="number" placeholder="رقم الهوية" name="id">
+        <input class="form-control mb-2" required  oninvalid="this.setCustomValidity('لا يمكن ترك هذه الخانة فارغة')" oninput="setCustomValidity('')" type="text" placeholder="الاسم الأول" name="firstname">
+        <input class="form-control mb-2" required  oninvalid="this.setCustomValidity('لا يمكن ترك هذه الخانة فارغة')" oninput="setCustomValidity('')" type="text" placeholder="الاسم الأخير" name="lastname">
+        <input class="form-control mb-2" required  oninvalid="this.setCustomValidity('لا يمكن ترك هذه الخانة فارغة')" oninput="setCustomValidity('')" type="number" placeholder="العمر" name="age">
+
+        <br>
+        <label for="gender" class="fw-bold text-end mb-2">الجنس:</label>
+        <select name="gender" id="gender" class="form-control" required>
+            <option value="male">ذكر</option>
+            <option value="female">أنثى</option>
+        </select>
+        <br>
+        <button class="btn btn-primary">متابعة</button>
+    </form>
+    <script>
+        document.querySelector('form').addEventListener('submit',(ev)=> {
+            ev.preventDefault();
+            const formData = new FormData(ev.currentTarget)
+            let data = {
+                pid: formData.get('id'),
+                gender: formData.get('gender'),
+                age: formData.get('age'),
+                firstname: formData.get('firstname'),
+                lastname: formData.get('lastname'),
+            }
+            let prevData = JSON.parse(sessionStorage.getItem('userData'))
+            sessionStorage.setItem('userData', JSON.stringify({...prevData, ...data}))
+            window.location.href = './clinic-cont.html'
+        })
+    </script>
+</body>
+
+</html>

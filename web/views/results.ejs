@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>النتائج</title>
+    <link rel="stylesheet" href="./assets/css/hitrun.css">
+</head>
+
+<body class="bg-light">
+    <main
+        style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; height: 100vh"
+        class="container text-center">
+        
+        <div>
+            <h1>النتائج</h1>
+            <br>
+            <pre style="flex-grow: 1;" id="chat">
+                <%= results %>
+            </pre>
+            <br>
+            <a href="./index.html" class="btn btn-secondary">الرجوع</a>
+        </div>
+        <br>
+        <div>
+            <br>
+            <h6>هل تحتاج إلى حجز موعد طارئ</h6>
+            <a href="./reservation-done.html" class="btn btn-outline-primary fw-bold" id="btn_reserve">احجز الآن</a>
+            <br><br>
+        </div>
+    </main>
+</body>
+
+</html>

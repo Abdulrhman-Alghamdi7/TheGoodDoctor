@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متابعة البيانات</title>
+    <link rel="stylesheet" href="./assets/css/hitrun.css">
+</head>
+
+<body dir="rtl" class="bg-light text-center">
+    <form action="./clinic-cont-2.html" style="height: 100vh;  display: grid; place-content: center;">
+        <h1>الرجاء تعبئة البيانات</h1>
+        <br>
+        <input required class="form-control mb-2" type="number" placeholder="الطول بالـسنتيمتر" name="length">
+        <input required class="form-control mb-2" type="number" placeholder="الوزن بالكيلوجرام" name="weight">
+        <!-- <br> -->
+        <!-- <h4>ضغط الدم</h4> -->
+        <input class="form-control mb-2" type="number" placeholder="درجة الحرارة (اختياري)" name="temp">
+        <input class="form-control mb-2" type="number" placeholder="سكر الدم (اختياري)" name="sugar">
+        <input class="form-control" type="text" placeholder="ضغط الدم (اختياري)" name="blood_pressure">
+        <small class="fw-bold mb-2 text-end">من اليسار إلى اليمين - الانقباضي/الانبساطي</small>
+        <br>
+        <br>
+        <button class="btn btn-primary">متابعة</button>
+    </form>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', (ev) => {
+            //TODO get queries from url first
+            console.log(ev.currentTarget, 'form Data')
+            const formData = new FormData(ev.currentTarget);
+
+            // Append data to the FormData object
+            let data = {
+                length: formData.get('length'),
+                weight: formData.get('weight'),
+                temp: formData.get('temp'),
+                sugar: formData.get('sugar'),
+                blood_pressure: formData.get('blood_pressure'),
+            }
+
+            let previousData = JSON.parse(sessionStorage.getItem('userData'))
+            sessionStorage.setItem('userData', JSON.stringify({...previousData, ...data}));
+            window.location.href = './clinic-cont-2.html';
+        })
+    </script>
+</body>
+
+</html>
